@@ -1,0 +1,125 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Remote Log Service",
+        "description": "We provides developer an online, free, and easy-to-use log service.\n\nYou don't need to register or setup anything.\n\n---\n\nNotes: All logs will be delete after 1 day of endpoint creation.\n\nThis service is powered by [Cloudflare Workers](https://workers.cloudflare.com/).",
+        "version": "1.0.0",
+        "contact": {
+            "name": "kj415j45",
+            "url": "https://github.com/kj415j45"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://log.kj415j45.workers.dev/",
+            "description": "Official Public Server"
+        }
+    ],
+    "tags": [],
+    "components": {
+        "schemas": {
+            "logEndpointInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Identifier of the log endpoint"
+                    }
+                }
+            }
+        },
+        "parameters": {
+            "id": {
+                "name": "id",
+                "in": "path",
+                "description": "Identifier of the log endpoint",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/": {
+            "post": {
+                "operationId": "generatelogEndpointInfo",
+                "summary": "Request log endpoint",
+                "description": "Request a new log endpoint with a random UUID",
+                "tags": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/logEndpointInfo"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/log/{id}": {
+            "post": {
+                "operationId": "pendingLog",
+                "summary": "Pending log",
+                "description": "Post log to the log endpoint",
+                "tags": [],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Log content",
+                    "required": true,
+                    "content": {
+                        "text/plain": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "OK"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "getLog",
+                "summary": "Get log",
+                "description": "Get log from the log endpoint",
+                "tags": [],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/id"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

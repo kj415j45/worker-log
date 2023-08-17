@@ -1,0 +1,15 @@
+name = ""
+main = "src/worker"
+compatibility_date = "2023-08-16"
+compatibility_flags = [ "nodejs_compat" ]
+
+account_id = ""
+workers_dev = true
+
+[[r2_buckets]]
+binding = 'LOG_BUCKET' #
+bucket_name = ''
+# preview_bucket_name = ''
+
+[placement]
+mode = "smart"

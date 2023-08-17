@@ -1,0 +1,9 @@
+# Node.js
+node_modules/
+
+# Wrangler config
+.wrangler
+wrangler.toml
+
+# local debug files
+*.http
