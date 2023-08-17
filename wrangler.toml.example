@@ -1,14 +1,14 @@
-name = ""
+name = "" # Your worker name
 main = "src/worker"
 compatibility_date = "2023-08-16"
 compatibility_flags = [ "nodejs_compat" ]
 
-account_id = ""
+account_id = "" # Your account ID
 workers_dev = true
 
 [[r2_buckets]]
-binding = 'LOG_BUCKET' #
-bucket_name = ''
+binding = 'LOG_BUCKET' # Don't touch it
+bucket_name = '' # Your R2 bucket name
 # preview_bucket_name = ''
 
 [placement]
