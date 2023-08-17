@@ -11,6 +11,9 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v3
+      - name: Write wrangler configure file
+        run: echo ${{ secrets.WRANGLER_FILE }} | base64 --decode > wrangler.toml
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
