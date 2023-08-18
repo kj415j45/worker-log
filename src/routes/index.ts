@@ -69,7 +69,7 @@ const index: BaseRoute = async function (request, env, ctx) {
 			});
 		}
 		case 'POST': {
-			const id = await generate(env);
+			const id = await generate(env, { suffix: request.headers.get('cf-ray') });
 			return Response.json({ id });
 		}
 	}

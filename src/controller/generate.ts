@@ -2,7 +2,7 @@ import { snowflake } from '../utils';
 import exist from './exist';
 import put from './put';
 
-export default async function generate(env: Env) {
+export default async function generate(env: Env, config?: { prefix?: string | null; suffix?: string | null }) {
 	let id: string;
 	let sf = snowflake();
 	do {
@@ -13,6 +13,10 @@ export default async function generate(env: Env) {
 			console.log(id + ' conflict');
 		}
 	} while (true);
+
+	const prefix = config?.prefix ?? '';
+	const suffix = config?.suffix ?? '';
+	id = prefix + id + suffix;
 
 	await put(env, id);
 
