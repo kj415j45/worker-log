@@ -11,8 +11,5 @@ binding = "DB"
 database_name = "log" # If you would like to use another name, please update package.json's script.
 database_id = ""
 
-[placement]
-mode = "smart"
-
 [triggers]
 crons = ["0 * * * *"]
