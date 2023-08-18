@@ -12,9 +12,9 @@ Notes: Official deployment is not guaranteed to be available at all time. And co
 
 ## Setup your own
 
-At your Cloudflare account, create a new worker and a R3 storage.
+At your Cloudflare account, create a new worker and a D1 database named `log`.
 
-Update the `wrangler.toml` file with your own configuration, the [example file](./wrangler.toml.example) could help you configure it.
+Create the `wrangler.toml` file at repository's root with your own configuration, the [example file](./wrangler.toml.example) could help you configure it.
 
 Then you can deploy it with wrangler. Run `npm run deploy`. Check [wrangler's documents](https://developers.cloudflare.com/workers/wrangler/commands/#deploy) for more details.
 

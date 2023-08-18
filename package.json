@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy",
-    "start": "wrangler dev"
+    "deploy": "wrangler d1 execute log --file=./schema.sql && wrangler deploy",
+    "start": "wrangler d1 execute log --local --file=./schema.sql && wrangler dev"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230419.0",

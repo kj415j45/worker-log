@@ -6,10 +6,10 @@ compatibility_flags = [ "nodejs_compat" ]
 account_id = "" # Your account ID
 workers_dev = true
 
-[[r2_buckets]]
-binding = 'LOG_BUCKET' # Don't touch it
-bucket_name = '' # Your R2 bucket name
-# preview_bucket_name = ''
+[[ d1_databases ]]
+binding = "DB"
+database_name = "log" # If you would like to use another name, please update package.json's script.
+database_id = ""
 
 [placement]
 mode = "smart"

@@ -1,6 +1,6 @@
 import { snowflake } from '../utils';
 import exist from './exist';
-import put from './put';
+import pending from './pending';
 
 export default async function generate(env: Env, config?: { prefix?: string | null; suffix?: string | null }) {
 	let id: string;
@@ -18,7 +18,7 @@ export default async function generate(env: Env, config?: { prefix?: string | nu
 	const suffix = config?.suffix ?? '';
 	id = prefix + id + suffix;
 
-	await put(env, id);
+	await pending(env, id);
 
 	return id;
 }

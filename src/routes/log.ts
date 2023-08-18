@@ -9,7 +9,7 @@ const log: BaseRoute = async function (request, env, ctx) {
 	switch (request.method) {
 		case 'GET': {
 			const log = await get(env, id);
-			return new Response(log);
+			return new Response(log!.trimStart());
 		}
 
 		case 'POST': {

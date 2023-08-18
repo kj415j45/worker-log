@@ -21,3 +21,6 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
+          preCommands: |
+            wrangler d1 create log
+            wrangler d1 execute log --file=./schema.sql
