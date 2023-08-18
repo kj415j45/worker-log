@@ -4,9 +4,25 @@ import { BaseRoute } from './baseRoute';
 const index: BaseRoute = async function (request, env, ctx) {
 	switch (request.method) {
 		case 'GET': {
-			const html = `
+			return new Response(indexPageHTML, {
+				headers: {
+					'content-type': 'text/html;charset=UTF-8',
+				},
+			});
+		}
+		case 'POST': {
+			const id = await generate(env, { suffix: request.headers.get('cf-ray') });
+			return Response.json({ id });
+		}
+	}
+	return new Response('Hello worker!');
+};
+
+export default index;
+
+const indexPageHTML = `
 <!doctype html>
-<html>
+<html data-bs-theme="dark">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,12 +59,19 @@ const index: BaseRoute = async function (request, env, ctx) {
 		</script>
 	</head>
 	<body>
-		<div class="container d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
+		<header>
+			<nav class="navbar bg-body-tertiary">
+				<div class="container-fluid">
+					<span class="navbar-brand mb-0 h1">Online Log Service</span>
+				</div>
+			</nav>
+		</header>
+		<div class="container d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
 			<button class="btn btn-primary" onClick="generate()">Generate</button>
 			<div class="col-lg-6 col-md-9 col-sm-12 mt-3">
 				<div class="input-group">
 					<button type="button" class="btn btn-outline-secondary" onClick="copyToClipboard()">Copy</button>
-					<input type="text" id="result" class="form-control" style="text-align: center;" onClick="this.select();" readonly>
+					<input type="text" id="result" class="form-control" style="text-align: center;" onClick="this.select();" placeholder='Click "Generate" Button' readonly>
 					<button type="button" class="btn btn-outline-secondary" onClick="goToUrl()">Goto</button>
 				</div>
 			</div>
@@ -62,18 +85,3 @@ const index: BaseRoute = async function (request, env, ctx) {
 	</body>
 </html>
 `;
-			return new Response(html, {
-				headers: {
-					'content-type': 'text/html;charset=UTF-8',
-				},
-			});
-		}
-		case 'POST': {
-			const id = await generate(env, { suffix: request.headers.get('cf-ray') });
-			return Response.json({ id });
-		}
-	}
-	return new Response('Hello worker!');
-};
-
-export default index;
