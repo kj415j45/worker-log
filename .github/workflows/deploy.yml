@@ -24,3 +24,5 @@ jobs:
           preCommands: |
             wrangler d1 create log
             wrangler d1 execute log --file=./schema.sql
+        env:
+          NO_D1_WARNING: true
