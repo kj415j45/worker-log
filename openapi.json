@@ -105,6 +105,17 @@
                 "parameters": [
                     {
                         "$ref": "#/components/parameters/id"
+                    },
+                    {
+                        "name": "timestamp",
+                        "in": "query",
+                        "description": "\"true\" to include timestamp.",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "true"
+                            ]
+                        }
                     }
                 ],
                 "responses": {

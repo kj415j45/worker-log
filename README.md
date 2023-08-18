@@ -2,7 +2,7 @@
 
 This project provides a simple way to log messages to a remote server. It is intended to be used in a development environment where you want to log messages from your application to a remote server. But you don't want to setup a full blown logging system like logstash or graylog.
 
-It is not recommended to use this in a production environment, as it does not provide some key feature like authentication, encryption, timestamp, or tracing. All depends on you.
+It is not recommended to use this in a production environment, as it does not provide some key feature that they have. All depends on you.
 
 ## Run without setup
 

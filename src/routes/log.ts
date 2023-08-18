@@ -5,10 +5,12 @@ import { BaseRoute } from './baseRoute';
 import error from './error';
 
 const log: BaseRoute = async function (request, env, ctx) {
-	const id = new URL(request.url).pathname.match(/\/log\/(.+)/)![1];
+	const url = new URL(request.url);
+	const id = url.pathname.match(/\/log\/(.+)/)![1];
 	switch (request.method) {
 		case 'GET': {
-			const log = await get(env, id);
+			const timestamp = url.searchParams.get('timestamp') === 'true';
+			const log = await get(env, id, timestamp);
 			return new Response(log!.trimStart());
 		}
 
