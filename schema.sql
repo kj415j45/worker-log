@@ -1,1 +1,1 @@
-CREATE TABLE IF NOT EXISTS log (endpoint TEXT, timestamp INTEGER, anti_collision TEXT, message TEXT)
+CREATE TABLE IF NOT EXISTS log (endpoint TEXT, timestamp INTEGER, message TEXT)
