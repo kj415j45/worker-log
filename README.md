@@ -6,7 +6,7 @@ It is not recommended to use this in a production environment, as it does not pr
 
 ## Run without setup
 
-This project has a public deployment at [Cloudflare Workers](https://log.kj415j45.workers.dev/). API document can be found at [openapi.json](./openapi.json).
+This project has a public deployment at [Cloudflare Workers](https://log.kj415j45.space/). API document can be found at [openapi.json](./openapi.json).
 
 Notes: Official deployment is not guaranteed to be available at all time. And configured with 1 day expiry cleaning up. It is recommended to setup your own deployment if you needed more reliability.
 

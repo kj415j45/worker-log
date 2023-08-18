@@ -11,7 +11,7 @@ jobs:
     name: Deploy
     environment:
       name: official
-      url: https://log.kj415j45.workers.dev/
+      url: https://log.kj415j45.space/
     steps:
       - uses: actions/checkout@v3
       - name: Write wrangler configure file
