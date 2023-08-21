@@ -1,5 +1,3 @@
-import { Buffer } from 'node:buffer';
-
 export function* snowflake(workerId?: number): Generator<string> {
 	let seq = 0;
 	const maxSeq = Math.pow(2, 12);
