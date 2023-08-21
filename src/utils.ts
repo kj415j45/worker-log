@@ -2,7 +2,7 @@ export function* snowflake(workerId?: number): Generator<string> {
 	let seq = 0;
 	const maxSeq = Math.pow(2, 12);
 	if (workerId === null || workerId === undefined) {
-		workerId = Math.floor(Math.random() * 1024);
+		workerId = crypto.getRandomValues(new Int16Array(1))[0];
 	}
 	const epoch = Date.parse('2000-01-01T00:00:00.000Z');
 
@@ -17,7 +17,7 @@ export function* snowflake(workerId?: number): Generator<string> {
 		// 10 bits for the worker ID
 		// 12 bits for the sequence number
 
-		yield ((BigInt(time) << 22n) | (BigInt(workerId) << 12n) | BigInt(seq)).toString(16);
+		yield ((BigInt(time) << 22n) | BigInt((workerId & 0x3ff) << 12) | BigInt(seq & 0xfff)).toString(16);
 		seq = (seq + 1) % maxSeq;
 	} while (true);
 }

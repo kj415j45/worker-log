@@ -1,7 +1,6 @@
 name = "" # Your worker name
 main = "src/worker"
 compatibility_date = "2023-08-16"
-compatibility_flags = [ "nodejs_compat" ]
 
 account_id = "" # Your account ID
 workers_dev = true
