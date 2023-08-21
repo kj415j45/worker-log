@@ -11,7 +11,7 @@ const log: BaseRoute = async function (request, env, ctx) {
 		case 'GET': {
 			const timestamp = url.searchParams.get('timestamp') === 'true';
 			const log = await get(env, id, timestamp);
-			return new Response(log!.trimStart());
+			return new Response(log ?? '');
 		}
 
 		case 'POST': {
