@@ -1,5 +1,6 @@
 import generate from '../controller/generate';
 import { BaseRoute } from './baseRoute';
+import error from './error';
 
 const index: BaseRoute = async function (request, env, ctx) {
 	switch (request.method) {
@@ -15,7 +16,7 @@ const index: BaseRoute = async function (request, env, ctx) {
 			return Response.json({ id });
 		}
 	}
-	return new Response('Hello worker!');
+	return error(request, env, ctx);
 };
 
 export default index;
